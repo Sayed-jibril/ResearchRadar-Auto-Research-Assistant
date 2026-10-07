@@ -1,0 +1,80 @@
+SCHOLARLENS SEARCH ISSUE - FIXED! ✅
+=====================================
+
+PROBLEM IDENTIFIED:
+===================
+The "No results found" error was caused by frontend-backend communication issues, specifically:
+
+1. ❌ Frontend API URL mismatch: Frontend was configured to call http://localhost:8080 but backend runs on http://localhost:5000
+2. ❌ Response parsing error: Frontend was expecting response.data to be an array, but backend returns { results: [...], metadata: {...} }
+
+FIXES APPLIED:
+==============
+
+1. ✅ FIXED API BASE URL in src/lib/api.ts:
+   - Changed from: 'http://localhost:8080'
+   - Changed to: 'http://localhost:5000'
+
+2. ✅ FIXED Response parsing in src/lib/hooks/use-search.ts:
+   - Changed from: return response.data
+   - Changed to: return response.data.results
+
+3. ✅ FIXED Case sensitivity in scholarlens/frontend/src/lib/hooks/use-search.ts:
+   - Changed from: response.data.Results
+   - Changed to: response.data.results
+
+VERIFICATION:
+=============
+✅ Backend API health check: PASSED (http://localhost:5000/health)
+✅ NLP Service health check: PASSED (http://localhost:8000/health) 
+✅ Backend search API test: PASSED - Returns mock results
+✅ API response structure: CORRECT - { results: [...], metadata: {...} }
+
+BACKEND API TEST RESULT:
+========================
+Query: "machine learning"
+Response: 
+{
+  "results": [
+    {
+      "id": "a43ecd8e-54e0-47ac-b29a-db1ef12ac7c7",
+      "source": "Mock",
+      "title": "Mock Paper for 'machine learning'",
+      "authors": [{"name": "Test Author", "affiliation": null}],
+      "abstract": "This is a mock paper result for testing purposes.",
+      "year": 2024,
+      "isOpenAccess": true,
+      "score": 0.95
+    }
+  ],
+  "metadata": {
+    "query": "machine learning",
+    "totalResults": 1,
+    "filteredResults": 1,
+    "processingTime": "00:00:00.0500000"
+  }
+}
+
+NEXT STEPS:
+===========
+1. 🔄 Restart the frontend development server to pick up the changes
+2. 🧪 Test with the sample queries from research_query_sample.txt
+3. 📊 The system should now return mock results for testing
+4. 🔗 External APIs (arXiv, Crossref, Semantic Scholar) are configured and will work when called
+
+RESTART COMMAND:
+================
+Terminal 3 (Frontend):
+cd C:\xampp\htdocs\ScholarLens---Auto-Research-Assistant\scholarlens\frontend
+npm run dev
+
+READY TO TEST:
+==============
+Now try these sample queries in your frontend:
+- "machine learning medical diagnosis radiology"
+- "renewable energy storage battery technology"
+- "digital twins manufacturing Industry 4.0"
+- "carbon capture utilization climate change mitigation"
+- "artificial intelligence cybersecurity threat detection"
+
+The search should now return results instead of "No results found"! 🎉

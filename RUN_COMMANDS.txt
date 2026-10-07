@@ -1,0 +1,34 @@
+SCHOLARLENS - EXACT WORKING COMMANDS
+====================================
+
+BACKEND API (Terminal 1):
+cd C:\xampp\htdocs\ScholarLens---Auto-Research-Assistant\scholarlens\backend\ScholarLens.Api
+dotnet run --urls "http://localhost:5000"
+
+NLP SERVICE (Terminal 2):
+cd C:\xampp\htdocs\ScholarLens---Auto-Research-Assistant\scholarlens\nlp-service
+python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
+
+FRONTEND (Terminal 3):
+cd C:\xampp\htdocs\ScholarLens---Auto-Research-Assistant\scholarlens\frontend
+npm run dev
+
+TEST COMMANDS:
+=============
+
+Test Backend Health:
+Invoke-RestMethod -Uri "http://localhost:5000/health" -Method GET
+
+Test Search API:
+$body = '{"query":"machine learning","limit":5}'
+Invoke-RestMethod -Uri "http://localhost:5000/api/search" -Method POST -Body $body -ContentType "application/json"
+
+Test NLP Service:
+Invoke-RestMethod -Uri "http://localhost:8000/health" -Method GET
+
+SERVICE URLS:
+============
+Backend API: http://localhost:5000
+NLP Service: http://localhost:8000
+Frontend: http://localhost:3000
+API Docs: http://localhost:5000/swagger

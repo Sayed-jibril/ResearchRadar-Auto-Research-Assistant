@@ -1,0 +1,74 @@
+SCHOLARLENS RESEARCH QUERY SAMPLES
+==================================
+
+Here are 5 ready-to-use research queries you can copy and paste directly into the ScholarLens search form:
+
+QUERY 1: AI IN HEALTHCARE
+=========================
+Research Topic: "machine learning medical diagnosis radiology"
+Year Range: 2020 - 2025
+Max Results: 25
+Open Access: Yes
+Language: en
+
+Expected Results: Papers on AI/ML applications in medical imaging, diagnostic systems, and radiology analysis.
+
+QUERY 2: SUSTAINABLE TECHNOLOGY
+===============================
+Research Topic: "renewable energy storage battery technology"
+Year Range: 2019 - 2025
+Max Results: 30
+Open Access: No
+Language: en
+
+Expected Results: Research on energy storage solutions, battery innovations, and renewable energy integration.
+
+QUERY 3: DIGITAL TRANSFORMATION
+===============================
+Research Topic: "digital twins manufacturing Industry 4.0"
+Year Range: 2021 - 2025
+Max Results: 20
+Open Access: Yes
+Language: en
+
+Expected Results: Studies on digital twin technology in manufacturing, smart factories, and Industry 4.0 implementations.
+
+QUERY 4: CLIMATE SCIENCE
+========================
+Research Topic: "carbon capture utilization climate change mitigation"
+Year Range: 2020 - 2025
+Max Results: 35
+Open Access: No
+Language: en
+
+Expected Results: Research on carbon capture technologies, utilization methods, and climate change mitigation strategies.
+
+QUERY 5: CYBERSECURITY
+======================
+Research Topic: "artificial intelligence cybersecurity threat detection"
+Year Range: 2022 - 2025
+Max Results: 25
+Open Access: Yes
+Language: en
+
+Expected Results: Papers on AI-powered cybersecurity, threat detection systems, and security automation.
+
+QUICK COPY-PASTE QUERIES:
+=========================
+
+Query 1: machine learning medical diagnosis radiology
+Query 2: renewable energy storage battery technology  
+Query 3: digital twins manufacturing Industry 4.0
+Query 4: carbon capture utilization climate change mitigation
+Query 5: artificial intelligence cybersecurity threat detection
+
+TESTING INSTRUCTIONS:
+====================
+1. Go to http://localhost:3000
+2. Copy any query from above
+3. Paste into "Research Topic" field
+4. Set the recommended filters
+5. Click "Search Papers"
+6. Review results and generate reports
+
+These queries are designed to return relevant results from multiple academic sources integrated in ScholarLens.

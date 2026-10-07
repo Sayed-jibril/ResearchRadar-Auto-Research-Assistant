@@ -1,0 +1,137 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: scholarlens-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-scholarlens}
+      POSTGRES_USER: ${POSTGRES_USER:-scholarlens}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-scholarlens}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-scholarlens} -d ${POSTGRES_DB:-scholarlens}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - scholarlens-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: scholarlens-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - scholarlens-network
+
+  # Backend API (.NET Core)
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: scholarlens-backend
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__DefaultConnection=Host=postgres;Database=${POSTGRES_DB:-scholarlens};Username=${POSTGRES_USER:-scholarlens};Password=${POSTGRES_PASSWORD:-scholarlens}
+      - RedisConnection=${REDIS_URL:-redis:6379}
+      - ExternalApis__Crossref__BaseUrl=${CROSSREF_BASE:-https://api.crossref.org}
+      - ExternalApis__Arxiv__BaseUrl=${ARXIV_BASE:-http://export.arxiv.org/api/query}
+      - ExternalApis__SemanticScholar__BaseUrl=${SEMANTIC_BASE:-https://api.semanticscholar.org/graph/v1}
+      - ExternalApis__Unpaywall__BaseUrl=${UNPAYWALL_BASE:-https://api.unpaywall.org/v2}
+      - ExternalApis__Unpaywall__Email=${UNPAYWALL_EMAIL:-you@example.com}
+      - NlpService__BaseUrl=${NLP_SERVICE_URL:-http://nlp:8000}
+      - Branding__Name=${BRAND_NAME:-ScholarLens}
+      - Branding__Locale=${REPORT_LOCALE:-en}
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - reports_data:/app/reports
+      - temp_data:/app/temp
+    networks:
+      - scholarlens-network
+
+  # NLP Service (Python FastAPI)
+  nlp:
+    build:
+      context: ../nlp-service
+      dockerfile: Dockerfile
+    container_name: scholarlens-nlp
+    environment:
+      - ENVIRONMENT=development
+      - HOST=0.0.0.0
+      - PORT=8000
+      - MODEL_CACHE_DIR=/app/models
+      - TEMP_DIR=/app/temp
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - models_data:/app/models
+      - temp_data:/app/temp
+    networks:
+      - scholarlens-network
+
+  # Frontend (Next.js)
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: scholarlens-frontend
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_API_URL=${BACKEND_URL:-http://localhost:8080}
+      - NEXT_PUBLIC_BRAND_NAME=${BRAND_NAME:-ScholarLens}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+      - /app/.next
+    networks:
+      - scholarlens-network
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  reports_data:
+    driver: local
+  temp_data:
+    driver: local
+  models_data:
+    driver: local
+
+networks:
+  scholarlens-network:
+    driver: bridge

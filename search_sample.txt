@@ -1,0 +1,190 @@
+SCHOLARLENS SEARCH SAMPLES
+==========================
+
+Welcome to ScholarLens! Here are sample research topics and filter combinations you can try on our platform.
+
+AVAILABLE SEARCH FILTERS:
+========================
+• Research Topic: Enter your query (3-1000 characters)
+• Year Range: From Year (e.g., 2019) to To Year (e.g., 2025)
+• Max Results: 5-100 papers (default: 25)
+• Open Access Only: Checkbox to filter only free-to-access papers
+• Language: Currently supports English (en)
+
+DATA SOURCES:
+============
+• arXiv - Preprints and open access papers
+• Crossref - Comprehensive academic metadata
+• Semantic Scholar - AI-enhanced paper data with citations
+• Unpaywall - Open access paper detection
+
+SAMPLE RESEARCH TOPICS TO TRY:
+=============================
+
+1. ARTIFICIAL INTELLIGENCE & MACHINE LEARNING
+   ✓ "machine learning in healthcare"
+   ✓ "deep learning for computer vision"
+   ✓ "natural language processing transformers"
+   ✓ "reinforcement learning applications"
+   ✓ "neural networks optimization"
+   ✓ "AI ethics and bias detection"
+   ✓ "large language models GPT"
+   
+   Recommended Filters:
+   - Year Range: 2020-2025
+   - Max Results: 25-50
+   - Open Access: Optional
+
+2. ENGINEERING & TECHNOLOGY
+   ✓ "digital twins in manufacturing"
+   ✓ "plastic injection molding optimization"
+   ✓ "renewable energy systems"
+   ✓ "autonomous vehicles control systems"
+   ✓ "IoT sensors and networks"
+   ✓ "robotics automation"
+   ✓ "3D printing materials"
+   
+   Recommended Filters:
+   - Year Range: 2018-2025
+   - Max Results: 30
+   - Open Access: Yes (for better access)
+
+3. MEDICAL & HEALTH SCIENCES
+   ✓ "COVID-19 vaccine efficacy"
+   ✓ "cancer immunotherapy"
+   ✓ "mental health interventions"
+   ✓ "precision medicine genomics"
+   ✓ "telemedicine effectiveness"
+   ✓ "drug discovery artificial intelligence"
+   ✓ "medical imaging diagnosis"
+   
+   Recommended Filters:
+   - Year Range: 2019-2025
+   - Max Results: 25
+   - Open Access: Yes (high availability)
+
+4. CLIMATE & ENVIRONMENTAL SCIENCE
+   ✓ "climate change adaptation"
+   ✓ "carbon capture technologies"
+   ✓ "sustainable agriculture practices"
+   ✓ "renewable energy storage"
+   ✓ "ocean acidification impacts"
+   ✓ "biodiversity conservation"
+   ✓ "green building materials"
+   
+   Recommended Filters:
+   - Year Range: 2019-2025
+   - Max Results: 40
+   - Open Access: Optional
+
+5. BUSINESS & ECONOMICS
+   ✓ "digital transformation strategy"
+   ✓ "cryptocurrency blockchain adoption"
+   ✓ "remote work productivity"
+   ✓ "supply chain resilience"
+   ✓ "fintech innovation"
+   ✓ "sustainable business models"
+   ✓ "e-commerce consumer behavior"
+   
+   Recommended Filters:
+   - Year Range: 2020-2025
+   - Max Results: 25
+   - Open Access: Optional
+
+6. SOCIAL SCIENCES & EDUCATION
+   ✓ "online learning effectiveness"
+   ✓ "social media mental health"
+   ✓ "educational technology impact"
+   ✓ "digital divide inequality"
+   ✓ "work-life balance remote work"
+   ✓ "cultural diversity workplace"
+   ✓ "gamification learning outcomes"
+   
+   Recommended Filters:
+   - Year Range: 2019-2025
+   - Max Results: 30
+   - Open Access: Yes
+
+7. COMPUTER SCIENCE & SOFTWARE
+   ✓ "cybersecurity threat detection"
+   ✓ "cloud computing optimization"
+   ✓ "software testing automation"
+   ✓ "distributed systems scalability"
+   ✓ "blockchain consensus algorithms"
+   ✓ "quantum computing applications"
+   ✓ "edge computing performance"
+   
+   Recommended Filters:
+   - Year Range: 2020-2025
+   - Max Results: 35
+   - Open Access: Optional
+
+8. PHYSICS & MATERIALS SCIENCE
+   ✓ "quantum materials properties"
+   ✓ "superconductivity applications"
+   ✓ "nanotechnology drug delivery"
+   ✓ "photonics optical computing"
+   ✓ "energy storage materials"
+   ✓ "metamaterials electromagnetic"
+   ✓ "graphene applications"
+   
+   Recommended Filters:
+   - Year Range: 2018-2025
+   - Max Results: 25
+   - Open Access: Yes (arXiv rich)
+
+QUICK START EXAMPLES:
+===================
+
+BEGINNER SEARCH:
+Topic: "artificial intelligence"
+Year Range: 2022-2025
+Max Results: 15
+Open Access: Yes
+
+INTERMEDIATE SEARCH:
+Topic: "machine learning healthcare diagnosis"
+Year Range: 2020-2025
+Max Results: 25
+Open Access: No
+
+ADVANCED SEARCH:
+Topic: "deep reinforcement learning autonomous vehicle navigation safety"
+Year Range: 2021-2025
+Max Results: 50
+Open Access: Optional
+
+TIPS FOR BETTER SEARCH RESULTS:
+==============================
+✓ Use specific technical terms rather than general words
+✓ Combine 2-4 relevant keywords for targeted results
+✓ Include domain-specific terms (e.g., "neural networks" vs "AI")
+✓ Try both broad and narrow queries to explore different aspects
+✓ Use recent year ranges (2019+) for cutting-edge research
+✓ Enable "Open Access Only" for freely available papers
+✓ Start with 25 results, then adjust based on relevance
+
+GENERATING REPORTS:
+==================
+After searching, you can:
+1. Select specific papers from results
+2. Generate comprehensive research reports
+3. Get AI-powered summaries
+4. Create visualizations and charts
+5. Export findings in multiple formats
+
+ACCESS URLs:
+===========
+Frontend: http://localhost:3000
+Backend API: http://localhost:5000
+API Documentation: http://localhost:5000/swagger
+NLP Service: http://localhost:8000
+
+TROUBLESHOOTING:
+===============
+• "No results found" → Try broader search terms or different year ranges
+• Slow results → Reduce max results or check internet connection
+• Limited open access → Disable "Open Access Only" filter
+• Technical errors → Check all services are running (see RUN_COMMANDS.txt)
+
+Happy researching with ScholarLens! 🔬📚
